@@ -8,7 +8,7 @@ with open('balance.txt', 'r') as f:
         print('3) Record a credit *deposit')
         print('4) EXIT ')
 
-#prompt for user input
+        #prompt for user input
         choice = input()
         if choice == '1':
         #Display current balance
@@ -16,22 +16,31 @@ with open('balance.txt', 'r') as f:
 
         elif choice == '2':
         # record a debit
-            amount = float(input('Enter the debit amount:'))
-            balance -= amount
-            with open('balance.txt','w') as f:
-                f.write(str(balance))
-            print('Debit of ${:.2f} recorded! Your new balance is: ${:.2f}'.format(amount, balance))
+            amount = input('Enter the debit amount:')
+            if amount.isdigit():
+                amount = float(amount)
+                balance -= amount
+                with open('balance.txt','w') as f:
+                    f.write(str(balance))
+                print('Debit of ${:.2f} recorded! Your new balance is: ${:.2f}'.format(amount, balance))
+            else:
+                print('Please enter a valid amount!')
 
         elif choice == '3':
         #record a credit
-            amount = float(input('Enter the credit amount:'))
-            balance += amount
-            with open('balance.txt', 'w') as f:
-                f.write(str(balance))
-            print('Credit of ${:.2f} recorded! Your new balance is: ${:.2f}'.format(amount, balance))
+            amount = input('Enter the credit amount:')
+            if amount.isdigit():
+                amount = float(amount)
+                balance += amount
+                with open('balance.txt', 'w') as f:
+                    f.write(str(balance))
+                print('Credit of ${:.2f} recorded! Your new balance is: ${:.2f}'.format(amount, balance))
+            else:
+                print('Please enter a valid amount!')
 
         elif choice == '4':
-        # exit print salutations
+        # exit print3
+        #  salutations
             print('Have a GREAT day!')
             break
 
